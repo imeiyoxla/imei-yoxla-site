@@ -6,81 +6,160 @@
 <title>IMEI Yoxla</title>
 
 <style>
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#0B101E;
-    color:white;
-    text-align:center;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
-.container{
-    max-width:800px;
-    margin:auto;
-    padding:40px 20px;
+body{
+background:#0B101E;
+color:white;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.logo{
+font-size:80px;
+margin-bottom:15px;
 }
 
 h1{
-    color:#00E5FF;
-    font-size:42px;
+font-size:48px;
+margin-bottom:10px;
+color:#00E5FF;
 }
 
-p{
-    font-size:18px;
-    line-height:1.6;
+.subtitle{
+font-size:20px;
+color:#A0AABF;
+margin-bottom:30px;
+max-width:700px;
 }
 
-.btn{
-    display:inline-block;
-    margin-top:20px;
-    padding:15px 30px;
-    background:#00E5FF;
-    color:black;
-    text-decoration:none;
-    font-weight:bold;
-    border-radius:12px;
+.download-btn{
+background:#00E5FF;
+color:black;
+padding:18px 40px;
+border-radius:50px;
+text-decoration:none;
+font-weight:bold;
+font-size:20px;
+transition:0.3s;
+}
+
+.download-btn:hover{
+transform:scale(1.05);
 }
 
 .features{
-    margin-top:40px;
-    text-align:left;
+padding:60px 20px;
+max-width:1000px;
+margin:auto;
 }
 
-.features li{
-    margin:10px 0;
+.features h2{
+text-align:center;
+margin-bottom:40px;
+color:#00E5FF;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:#1E2638;
+padding:25px;
+border-radius:20px;
+}
+
+.card h3{
+margin-bottom:10px;
+color:#00E5FF;
+}
+
+.footer{
+text-align:center;
+padding:30px;
+color:#A0AABF;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<section class="hero">
+
+<div class="logo">📱</div>
 
 <h1>IMEI Yoxla</h1>
 
-<p>
-Azərbaycan üçün hazırlanmış IMEI yoxlama tətbiqi.
+<p class="subtitle">
+Telefonun IMEI məlumatlarını saniyələr içində yoxla.
+MyGov və Gömrük məlumatları bir yerdə.
 </p>
 
-<a class="btn"
+<a class="download-btn"
 href="https://github.com/ismayilzadeheci-netizen/imei-yoxla-site/releases/download/v1.0/IMEI_Yoxla.1.apk">
 📥 APK Yüklə
 </a>
 
-<div class="features">
+</section>
+
+<section class="features">
+
 <h2>İmkanlar</h2>
 
-<ul>
-<li>✅ IMEI qeydiyyat statusunun yoxlanması</li>
-<li>✅ Gömrük bəyannaməsinin yoxlanması</li>
-<li>✅ Telefon marka və modelinin müəyyən edilməsi</li>
-<li>✅ Dual IMEI dəstəyi</li>
-<li>✅ Sürətli və rahat interfeys</li>
-<li>✅ Azərbaycan dilində</li>
-</ul>
+<div class="grid">
+
+<div class="card">
+<h3>🔍 IMEI Yoxlama</h3>
+<p>IMEI kodunun qeydiyyat vəziyyətini yoxlayın.</p>
+</div>
+
+<div class="card">
+<h3>📱 Cihaz Məlumatı</h3>
+<p>Brend, model və cihaz adını öyrənin.</p>
+</div>
+
+<div class="card">
+<h3>🛡️ Təhlükəsiz</h3>
+<p>Sürətli və rahat istifadə üçün hazırlanıb.</p>
+</div>
+
+<div class="card">
+<h3>📡 Dövlət Məlumatları</h3>
+<p>MyGov və Gömrük sistemlərindən məlumat əldə edir.</p>
+</div>
+
+<div class="card">
+<h3>📲 Dual IMEI</h3>
+<p>İki IMEI-ni eyni anda yoxlama imkanı.</p>
+</div>
+
+<div class="card">
+<h3>⚡ Sürətli</h3>
+<p>Nəticələr bir neçə saniyə ərzində göstərilir.</p>
+</div>
 
 </div>
 
+</section>
+
+<div class="footer">
+IMEI Yoxla © 2026 | By Hacı
 </div>
 
 </body>
