@@ -2,7 +2,8 @@ name: Auto Update JSON
 
 on:
   release:
-    types: [published]
+    types:
+      - published
 
 jobs:
   update-json:
@@ -33,15 +34,17 @@ jobs:
           }
           EOF
 
-     - name: Commit and push update.json
-  run: |
-    git config user.name "github-actions[bot]"
-    git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Commit and push update.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-    git add update.json
+          git add update.json
 
-    git diff --cached --quiet && exit 0
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
 
-    git commit -m "Auto-update version to ${{ github.event.release.tag_name }}"
-
-    git push origin HEAD:main
+          git commit -m "Auto-update version to ${{ github.event.release.tag_name }}"
+          git push origin HEAD:main
