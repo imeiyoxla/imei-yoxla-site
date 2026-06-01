@@ -7,30 +7,23 @@ jobs:
   update-json:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: write # ОЧЕНЬ ВАЖНО: это должно быть здесь
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }} # Явно указываем токен
 
       - name: Update update.json
         run: |
-          # Берем имя тега из релиза (например, v2.1)
           VERSION_TAG=${{ github.event.release.tag_name }}
-          # Убираем букву 'v' для latestVersionCode
           VERSION=${VERSION_TAG#v}
-          
-          # Формируем имя файла (как ты обычно называешь APK)
-          # Если называешь иначе, поправь эту строку
           APK_NAME="IMEI.Yoxla.${VERSION}.apk"
-          
-          # Формируем ссылку
           APK_URL="https://github.com/${{ github.repository }}/releases/download/$VERSION_TAG/$APK_NAME"
           
-          # Создаем JSON
           echo "{\"latestVersionCode\": \"$VERSION\", \"url\": \"$APK_URL\"}" > update.json
           
-          # Делаем коммит изменений обратно в репозиторий
-          git config user.name "GitHub Action"
-          git config user.email "action@github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add update.json
           git commit -m "Auto-update version to $VERSION"
           git push
