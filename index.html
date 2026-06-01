@@ -208,7 +208,7 @@
         Telefonun IMEI məlumatlarını saniyələr içində öyrənin.
     </p>
     
-    <a class="download-btn" href="https://github.com/imei-yoxla-site/releases/download/v2/IMEI.Yoxla.v2.0.apk">
+    <a id="download-btn" class="download-btn" href="#">
         <i class="fa-brands fa-android"></i> APK Yüklə
     </a>
 
@@ -272,5 +272,20 @@
     IMEI Yoxla © 2026 | By Hacı
 </div>
 
-</body>
+</body> <script>
+  fetch('update.json')
+    .then(response => response.json())
+    .then(data => {
+      const btn = document.getElementById('download-btn');
+      if (btn) {
+        btn.href = data.url;
+        btn.innerHTML = '<i class="fa-brands fa-android"></i> APK Yüklə (v' + data.latestVersionCode + ')';
+      }
+    })
+    .catch(error => {
+      console.error('Ошибка:', error);
+      const btn = document.getElementById('download-btn');
+      if (btn) btn.innerHTML = 'Yüklə';
+    });
+</script>
 </html>
