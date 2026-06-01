@@ -9,27 +9,26 @@ jobs:
     permissions:
       contents: write 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
-          persist-credentials: true # Разрешаем использование токена для пуша
-          fetch-depth: 0            # Загружаем всю историю, чтобы Git не терялся
+          ref: main  # ЭТО САМОЕ ВАЖНОЕ: принудительно переключаемся на main
 
       - name: Update update.json
         run: |
-          # Настройка пользователя
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Получаем данные
+          # Данные релиза
           VERSION_TAG=${{ github.event.release.tag_name }}
           VERSION=${VERSION_TAG#v}
           APK_NAME="IMEI.Yoxla.${VERSION}.apk"
           APK_URL="https://github.com/${{ github.repository }}/releases/download/$VERSION_TAG/$APK_NAME"
           
-          # Записываем файл
+          # Пишем файл
           echo "{\"latestVersionCode\": \"$VERSION\", \"url\": \"$APK_URL\"}" > update.json
           
-          # Пушим напрямую
+          # Добавляем, комитим и пушим
           git add update.json
-          git commit -m "Auto-update version to $VERSION"
-          git push origin HEAD:main
+          # Проверяем, есть ли изменения, чтобы не было ошибки "nothing to commit"
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update version to $VERSION" && git push origin main)
