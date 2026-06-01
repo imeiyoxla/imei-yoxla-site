@@ -11,19 +11,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main  # Явно указываем ветку, в которую пушить
+          persist-credentials: true # Разрешаем использование токена для пуша
+          fetch-depth: 0            # Загружаем всю историю, чтобы Git не терялся
 
       - name: Update update.json
         run: |
+          # Настройка пользователя
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Получаем данные
           VERSION_TAG=${{ github.event.release.tag_name }}
           VERSION=${VERSION_TAG#v}
           APK_NAME="IMEI.Yoxla.${VERSION}.apk"
           APK_URL="https://github.com/${{ github.repository }}/releases/download/$VERSION_TAG/$APK_NAME"
           
+          # Записываем файл
           echo "{\"latestVersionCode\": \"$VERSION\", \"url\": \"$APK_URL\"}" > update.json
           
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Пушим напрямую
           git add update.json
           git commit -m "Auto-update version to $VERSION"
-          git push origin main
+          git push origin HEAD:main
