@@ -1,4 +1,5 @@
 name: Auto Update JSON
+
 on:
   release:
     types: [published]
@@ -6,27 +7,41 @@ on:
 jobs:
   update-json:
     runs-on: ubuntu-latest
+
     permissions:
-      contents: write 
+      contents: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           ref: main
+          fetch-depth: 0
 
       - name: Generate update.json
         run: |
-          # Логика генерации данных
-          VERSION_TAG=${{ github.event.release.tag_name }}
-          VERSION=${VERSION_TAG#v}
-          APK_NAME="IMEI.Yoxla.${VERSION}.apk"
-          APK_URL="https://github.com/${{ github.repository }}/releases/download/$VERSION_TAG/$APK_NAME"
-          
-          # Пишем файл
-          echo "{\"latestVersionCode\": \"$VERSION\", \"url\": \"$APK_URL\"}" > update.json
+          VERSION_TAG="${{ github.event.release.tag_name }}"
+          VERSION="${VERSION_TAG#v}"
 
-      - name: Push update.json
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Auto-update version to ${{ github.event.release.tag_name }}"
-          file_pattern: 'update.json'
+          APK_NAME="IMEI.Yoxla.${VERSION}.apk"
+          APK_URL="https://github.com/${{ github.repository }}/releases/download/${VERSION_TAG}/${APK_NAME}"
+
+          cat > update.json << EOF
+          {
+            "latestVersionCode": "${VERSION}",
+            "url": "${APK_URL}"
+          }
+          EOF
+
+      - name: Commit and push update.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add update.json
+
+          git diff --cached --quiet && exit 0
+
+          git commit -m "Auto-update version to ${{ github.event.release.tag_name }}"
+
+          git push origin main
