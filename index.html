@@ -1,165 +1,206 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IMEI Yoxla</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMEI Yoxla - Təhlükəsiz və Sürətli</title>
+    
+    <!-- Подключаем современный шрифт Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- Подключаем профессиональные иконки FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Inter', sans-serif;
+    }
 
-body{
-background:#0B101E;
-color:white;
-}
+    body {
+        background: #0B101E;
+        color: #FFFFFF;
+        line-height: 1.6;
+    }
 
-.hero{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
-}
+    .hero {
+        min-height: 85vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        background: radial-gradient(circle at center, #162032 0%, #0B101E 100%);
+    }
 
-.logo{
-font-size:80px;
-margin-bottom:15px;
-}
+    .logo-icon {
+        font-size: 64px;
+        color: #00E5FF;
+        margin-bottom: 20px;
+        filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.4));
+    }
 
-h1{
-font-size:48px;
-margin-bottom:10px;
-color:#00E5FF;
-}
+    h1 {
+        font-size: 56px;
+        font-weight: 800;
+        margin-bottom: 15px;
+        letter-spacing: -1px;
+    }
 
-.subtitle{
-font-size:20px;
-color:#A0AABF;
-margin-bottom:30px;
-max-width:700px;
-}
+    .highlight {
+        color: #00E5FF;
+    }
 
-.download-btn{
-background:#00E5FF;
-color:black;
-padding:18px 40px;
-border-radius:50px;
-text-decoration:none;
-font-weight:bold;
-font-size:20px;
-transition:0.3s;
-}
+    .subtitle {
+        font-size: 20px;
+        color: #A0AABF;
+        margin-bottom: 40px;
+        max-width: 600px;
+        font-weight: 400;
+    }
 
-.download-btn:hover{
-transform:scale(1.05);
-}
+    .download-btn {
+        background: linear-gradient(135deg, #00E5FF 0%, #00B4D8 100%);
+        color: #0B101E;
+        padding: 18px 45px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 800;
+        font-size: 18px;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(0, 229, 255, 0.25);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 
-.features{
-padding:60px 20px;
-max-width:1000px;
-margin:auto;
-}
+    .download-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(0, 229, 255, 0.4);
+    }
 
-.features h2{
-text-align:center;
-margin-bottom:40px;
-color:#00E5FF;
-}
+    .features {
+        padding: 80px 20px;
+        max-width: 1100px;
+        margin: auto;
+    }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
+    .features h2 {
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 36px;
+        font-weight: 800;
+    }
 
-.card{
-background:#1E2638;
-padding:25px;
-border-radius:20px;
-}
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
 
-.card h3{
-margin-bottom:10px;
-color:#00E5FF;
-}
+    .card {
+        background: #151C2C;
+        padding: 35px 30px;
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: all 0.3s ease;
+    }
 
-.footer{
-text-align:center;
-padding:30px;
-color:#A0AABF;
-}
+    .card:hover {
+        transform: translateY(-5px);
+        background: #1A2336;
+        border-color: rgba(0, 229, 255, 0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .card i {
+        font-size: 32px;
+        color: #00E5FF;
+        margin-bottom: 20px;
+    }
+
+    .card h3 {
+        margin-bottom: 12px;
+        font-size: 22px;
+        font-weight: 600;
+    }
+
+    .card p {
+        color: #A0AABF;
+        font-size: 15px;
+    }
+
+    .footer {
+        text-align: center;
+        padding: 40px;
+        color: #6B778D;
+        font-size: 14px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
 </style>
 </head>
 
 <body>
 
 <section class="hero">
-
-<div class="logo">📱</div>
-
-<h1>IMEI Yoxla</h1>
-
-<p class="subtitle">
-Telefonun IMEI məlumatlarını saniyələr içində yoxla.
-MyGov və Gömrük məlumatları bir yerdə.
-</p>
-
-<a class="download-btn"
-href="https://github.com/ismayilzadeheci-netizen/imei-yoxla-site/releases/download/v1.0/IMEI_Yoxla.1.apk">
-📥 APK Yüklə
-</a>
-
+    <i class="fa-solid fa-mobile-screen-button logo-icon"></i>
+    
+    <h1>IMEI <span class="highlight">Yoxla</span></h1>
+    
+    <p class="subtitle">
+        Telefonun IMEI məlumatlarını saniyələr içində yoxla. MyGov və Gömrük məlumatları bir yerdə.
+    </p>
+    
+    <a class="download-btn" href="https://github.com/ismayilzadeheci-netizen/imei-yoxla-site/releases/download/v1.0/IMEI_Yoxla.1.apk">
+        <i class="fa-brands fa-android"></i> APK Yüklə
+    </a>
 </section>
 
 <section class="features">
-
-<h2>İmkanlar</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>🔍 IMEI Yoxlama</h3>
-<p>IMEI kodunun qeydiyyat vəziyyətini yoxlayın.</p>
-</div>
-
-<div class="card">
-<h3>📱 Cihaz Məlumatı</h3>
-<p>Brend, model və cihaz adını öyrənin.</p>
-</div>
-
-<div class="card">
-<h3>🛡️ Təhlükəsiz</h3>
-<p>Sürətli və rahat istifadə üçün hazırlanıb.</p>
-</div>
-
-<div class="card">
-<h3>📡 Dövlət Məlumatları</h3>
-<p>MyGov və Gömrük sistemlərindən məlumat əldə edir.</p>
-</div>
-
-<div class="card">
-<h3>📲 Dual IMEI</h3>
-<p>İki IMEI-ni eyni anda yoxlama imkanı.</p>
-</div>
-
-<div class="card">
-<h3>⚡ Sürətli</h3>
-<p>Nəticələr bir neçə saniyə ərzində göstərilir.</p>
-</div>
-
-</div>
-
+    <h2>İmkanlar</h2>
+    <div class="grid">
+        <div class="card">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <h3>IMEI Yoxlama</h3>
+            <p>IMEI kodunun qeydiyyat vəziyyətini yoxlayın.</p>
+        </div>
+        
+        <div class="card">
+            <i class="fa-solid fa-mobile-retro"></i>
+            <h3>Cihaz Məlumatı</h3>
+            <p>Brend, model və cihaz adını öyrənin.</p>
+        </div>
+        
+        <div class="card">
+            <i class="fa-solid fa-shield-halved"></i>
+            <h3>Təhlükəsiz</h3>
+            <p>Sürətli və rahat istifadə üçün hazırlanıb.</p>
+        </div>
+        
+        <div class="card">
+            <i class="fa-solid fa-building-columns"></i>
+            <h3>Dövlət Məlumatları</h3>
+            <p>MyGov və Gömrük sistemlərindən məlumat əldə edir.</p>
+        </div>
+        
+        <div class="card">
+            <i class="fa-solid fa-sim-card"></i>
+            <h3>Dual IMEI</h3>
+            <p>İki IMEI-ni eyni anda yoxlama imkanı.</p>
+        </div>
+        
+        <div class="card">
+            <i class="fa-solid fa-bolt"></i>
+            <h3>Sürətli</h3>
+            <p>Nəticələr bir neçə saniyə ərzində göstərilir.</p>
+        </div>
+    </div>
 </section>
 
 <div class="footer">
-IMEI Yoxla © 2026 | By Hacı
+    IMEI Yoxla © 2026 | By Hacı
 </div>
 
 </body>
