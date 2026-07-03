@@ -201,12 +201,12 @@
     }
 
     .subtitle {
-        font-size: 18px;
-        color: #A0AABF;
-        margin-bottom: 35px;
-        max-width: 540px;
-        font-weight: 400;
-    }
+    font-size: 24px;       /* Увеличил размер, чтобы было крупнее */
+    color: #FFFFFF;        /* Цвет стал чисто белым */
+    margin-bottom: 35px;
+    font-weight: 600;      /* Сделал текст чуть жирнее для солидности */
+    letter-spacing: 0.5px; /* Добавил немного расстояния между буквами */
+}
 
     .hero-actions {
         display: flex;
@@ -443,7 +443,7 @@
     <ul class="nav-links">
         <li class="dropdown">
             <a href="#" class="dropbtn" onclick="toggleDropdown(event)">
-                Tariflər <i class="fa-solid fa-chevron-down" style="font-size: 12px; pointer-events: none;"></i>
+               Qiymətlər <i class="fa-solid fa-chevron-down" style="font-size: 12px; pointer-events: none;"></i>
             </a>
             <!-- Выпадающий список тарифов -->
             <div class="dropdown-content" id="tariffsDropdown">
@@ -512,14 +512,19 @@
         flex: 1;
         justify-content: flex-end;
     }
-    .sc-img {
-        width: 180px;
-        border-radius: 20px;
-        border: 2px solid rgba(139, 92, 246, 0.2);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        transition: transform 0.3s;
-    }
-    .sc-img:hover { transform: scale(1.05); }
+   .sc-img {
+    width: 240px;          /* Увеличили ширину */
+    height: 480px;         /* Задали высоту, чтобы они были как телефоны */
+    object-fit: cover;     /* Картинка заполнит область, не искажаясь */
+    border-radius: 24px;
+    border: 2px solid rgba(139, 92, 246, 0.3);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5); /* Добавили объемную тень */
+    transition: transform 0.3s ease;
+}
+
+.sc-img:hover {
+    transform: translateY(-15px) scale(1.02); /* Эффект при наведении */
+}
     
     @media (max-width: 992px) {
         .hero-screenshots { display: none; } /* Скрываем на мобильных, если нужно */
