@@ -14,19 +14,14 @@ const deviceWarning = document.getElementById("device-warning");
 const verificationEmail = document.getElementById("verification-email");
 const otpCode = document.getElementById("otp-code");
 
-const fragment = new URLSearchParams(window.location.hash.slice(1));
-const deviceId = (fragment.get("device_id") || "").trim();
-
-// The Android ID is needed only in memory. Remove it from the visible URL immediately.
-if (window.location.hash) {
-    window.history.replaceState(null, document.title, window.location.pathname + window.location.search);
-}
+/* Android ID теперь берется из sessionStorage */
+const deviceId = (sessionStorage.getItem("device_id") || "").trim();
 
 let pendingRegistration = null;
 
 if (!deviceId) {
     deviceWarning.hidden = false;
-    registrationSubmit.disabled = true;
+    registrationSubmit.disabled = false;
 }
 
 document.querySelectorAll("[data-password-toggle]").forEach((button) => {
@@ -34,8 +29,13 @@ document.querySelectorAll("[data-password-toggle]").forEach((button) => {
         const input = document.getElementById(button.dataset.passwordToggle);
         const showPassword = input.type === "password";
         input.type = showPassword ? "text" : "password";
-        button.setAttribute("aria-label", showPassword ? "Şifrəni gizlət" : "Şifrəni göstər");
-        button.querySelector("i").className = showPassword ? "fa-regular fa-eye-slash" : "fa-regular fa-eye";
+        button.setAttribute(
+            "aria-label",
+            showPassword ? "Şifrəni gizlət" : "Şifrəni göstər"
+        );
+        button.querySelector("i").className = showPassword
+            ? "fa-regular fa-eye-slash"
+            : "fa-regular fa-eye";
     });
 });
 
@@ -43,17 +43,18 @@ registrationForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     clearMessage(registrationMessage);
 
-    if (!deviceId) {
-        showMessage(registrationMessage, "Qeydiyyat səhifəsini IMEI Yoxla tətbiqindən açın.");
-        return;
-    }
-
     const username = document.getElementById("username").value.trim();
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirm-password").value;
 
-    const validationError = validateRegistration({ username, email, password, confirmPassword });
+    const validationError = validateRegistration({
+        username,
+        email,
+        password,
+        confirmPassword
+    });
+
     if (validationError) {
         showMessage(registrationMessage, validationError);
         return;
@@ -73,9 +74,16 @@ registrationForm.addEventListener("submit", async (event) => {
             throw new Error(result.message || "OTP kodunu göndərmək mümkün olmadı.");
         }
 
-        pendingRegistration = { username, email, password, device_id: deviceId };
+        pendingRegistration = {
+            username,
+            email,
+            password,
+            device_id: deviceId
+        };
+
         verificationEmail.textContent = email;
         showVerificationStep();
+
     } catch (error) {
         showMessage(registrationMessage, friendlyError(error));
     } finally {
@@ -96,7 +104,10 @@ verificationForm.addEventListener("submit", async (event) => {
     otpCode.value = code;
 
     if (code.length < 4) {
-        showMessage(verificationMessage, "E-poçtunuza göndərilən OTP kodunu daxil edin.");
+        showMessage(
+            verificationMessage,
+            "E-poçtunuza göndərilən OTP kodunu daxil edin."
+        );
         return;
     }
 
@@ -117,7 +128,9 @@ verificationForm.addEventListener("submit", async (event) => {
         pendingRegistration.password = "";
         document.getElementById("password").value = "";
         document.getElementById("confirm-password").value = "";
+
         showSuccessStep();
+
     } catch (error) {
         showMessage(verificationMessage, friendlyError(error));
     } finally {
@@ -130,58 +143,94 @@ otpCode.addEventListener("input", () => {
     clearMessage(verificationMessage);
 });
 
-document.getElementById("back-to-registration").addEventListener("click", showRegistrationStep);
+document
+    .getElementById("back-to-registration")
+    .addEventListener("click", showRegistrationStep);
 
-function validateRegistration({ username, email, password, confirmPassword }) {
+function validateRegistration({
+    username,
+    email,
+    password,
+    confirmPassword
+}) {
     if (!username || !email || !password || !confirmPassword) {
         return "Bütün sahələri doldurun.";
     }
+
     if (username.length < 3) {
         return "İstifadəçi adı ən azı 3 simvol olmalıdır.";
     }
+
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         return "Düzgün e-poçt ünvanı daxil edin.";
     }
+
     if (password.length < 6) {
         return "Şifrə ən azı 6 simvol olmalıdır.";
     }
+
     if (password !== confirmPassword) {
         return "Şifrələr uyğun gəlmir.";
     }
+
     return "";
 }
 
 async function postJson(endpoint, payload) {
+
     const controller = new AbortController();
-    const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+
+    const timeout = window.setTimeout(
+        () => controller.abort(),
+        REQUEST_TIMEOUT_MS
+    );
 
     try {
-        // text/plain keeps this request CORS-simple. The existing server still parses the JSON body.
+
         const response = await fetch(`${SERVER_URL}${endpoint}`, {
+
             method: "POST",
-            headers: { "Content-Type": "text/plain;charset=UTF-8" },
+
+            headers: {
+                "Content-Type": "text/plain;charset=UTF-8"
+            },
+
             body: JSON.stringify(payload),
+
             signal: controller.signal
+
         });
 
         const result = await response.json().catch(() => null);
+
         if (!response.ok || !result) {
-            throw new Error(result?.message || `Server xətası: ${response.status}`);
+            throw new Error(
+                result?.message || `Server xətası: ${response.status}`
+            );
         }
+
         return result;
+
     } finally {
+
         window.clearTimeout(timeout);
+
     }
+
 }
 
 function friendlyError(error) {
+
     if (error?.name === "AbortError") {
         return "Server gec cavab verir. Bir az sonra yenidən cəhd edin.";
     }
+
     if (!navigator.onLine) {
         return "İnternet bağlantınızı yoxlayın.";
     }
+
     return error?.message || "Xəta baş verdi. Yenidən cəhd edin.";
+
 }
 
 function showRegistrationStep() {
@@ -210,22 +259,34 @@ function showSuccessStep() {
 
 function setActiveStep(number) {
     document.querySelectorAll("[data-step-indicator]").forEach((step) => {
+
         const stepNumber = Number(step.dataset.stepIndicator);
+
         step.classList.toggle("is-active", stepNumber === number);
+
         step.classList.toggle("is-complete", stepNumber < number);
+
     });
 }
 
 function setLoading(button, loading, label) {
-    button.disabled = loading || (button === registrationSubmit && !deviceId);
+
+    button.disabled = loading;
+
     button.querySelector("span").textContent = label;
+
 }
 
 function showMessage(element, message, success = false) {
+
     element.textContent = message;
+
     element.classList.toggle("is-success", success);
+
 }
 
 function clearMessage(element) {
+
     showMessage(element, "");
+
 }
