@@ -295,58 +295,6 @@
         color: #6B778D;
     }
 
-    /* СЕКЦИЯ ИМКАНЛАР */
-    .features {
-        padding: 80px 20px;
-        max-width: 1100px;
-        margin: auto;
-    }
-
-    .features h2 {
-        text-align: center;
-        margin-bottom: 50px;
-        font-size: 36px;
-        font-weight: 800;
-    }
-
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-    }
-
-    .card {
-        background: var(--card-bg);
-        padding: 35px 30px;
-        border-radius: 24px;
-        border: 1px solid var(--card-border);
-        transition: all 0.3s ease;
-    }
-
-    .card:hover {
-        transform: translateY(-5px);
-        background: #171C28;
-        border-color: rgba(139, 92, 246, 0.3);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    }
-
-    .card i {
-        font-size: 32px;
-        color: var(--primary-color);
-        margin-bottom: 20px;
-    }
-
-    .card h3 {
-        margin-bottom: 12px;
-        font-size: 22px;
-        font-weight: 600;
-    }
-
-    .card p {
-        color: #A0AABF;
-        font-size: 15px;
-    }
-
     /* СЕКЦИЯ ТАРИФОВ */
     .tariffs {
         padding: 60px 20px;
@@ -447,42 +395,6 @@
         color: var(--primary-color);
     }
 
-    /* ГАЛЕРЕЯ СКРИНШОТОВ */
-    .gallery-section {
-        padding: 60px 20px 100px 20px;
-        max-width: 1200px;
-        margin: auto;
-        text-align: center;
-    }
-
-    .gallery-section h2 {
-        font-size: 36px;
-        font-weight: 800;
-        margin-bottom: 40px;
-    }
-
-    .gallery-grid {
-        display: flex;
-        justify-content: center;
-        gap: 25px;
-        flex-wrap: wrap;
-    }
-
-    .gallery-item {
-        max-width: 220px;
-        width: 100%;
-        height: auto;
-        border-radius: 24px;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-        border: 3px solid var(--card-bg);
-        transition: all 0.3s ease;
-    }
-
-    .gallery-item:hover {
-        transform: translateY(-8px) scale(1.04);
-        border-color: var(--primary-color);
-    }
-
     /* FOOTER */
     .footer {
         background: #040508;
@@ -579,7 +491,6 @@
         <span>DHelper <span class="highlight">Az</span></span>
     </a>
     <ul class="nav-links">
-        <li><a href="#features">İmkanlar</a></li>
         <li><a href="#tariffs">Tariflər</a></li>
     </ul>
     <div class="nav-auth">
@@ -642,8 +553,6 @@
             </div>
         </div>
 
-        
-
         <div class="stat-card">
             <div class="stat-icon">
                 <i class="fa-solid fa-shield-halved"></i>
@@ -657,44 +566,6 @@
     </div>
 </section>
 
-<!-- СЕКЦИЯ ИМКАНЛАР -->
-<section class="features" id="features">
-    <h2>İmkanlar</h2>
-    <div class="grid">
-        <div class="card">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <h3>IMEI Yoxlama</h3>
-            <p>IMEI qeydiyyatı haqqında, bəyanı haqqında, müvəqqəti istifadə verilməsi haqqında məlumat.</p>
-        </div>
-        
-        <div class="card">
-            <i class="fa-solid fa-mobile-retro"></i>
-            <h3>Cihaz Məlumatı</h3>
-            <p>Brend, model və texniki xüsusiyyətlər.</p>
-        </div>
-        
-        <div class="card">
-            <i class="fa-solid fa-shield-halved"></i>
-            <h3>Təhlükəsiz</h3>
-            <p>Sürətli və rahat istifadə.</p>
-        </div>
-        
-    
-        
-        <div class="card">
-            <i class="fa-solid fa-sim-card"></i>
-            <h3>Dual IMEI</h3>
-            <p>İki IMEI nömrəsini eyni anda yoxlama imkanı.</p>
-        </div>
-        
-        <div class="card">
-            <i class="fa-solid fa-bolt"></i>
-            <h3>Sürətli</h3>
-            <p>Nəticələr bir neçə saniyə ərzində göstərilir.</p>
-        </div>
-    </div>
-</section>
-
 <!-- СЕКЦИЯ ТАРИФОВ -->
 <section class="tariffs" id="tariffs">
     <h2>Tariflər</h2>
@@ -704,8 +575,6 @@
             <div class="tariff-price">0 ₼ <span>/ ay</span></div>
             <ul class="tariff-features">
                 <li><i class="fa-solid fa-check"></i> 7 Sınaq müddəti</li>
-                
-                
             </ul>
             <a href="register.html" class="tariff-btn">İstifadəyə başla</a>
         </div>
@@ -717,21 +586,9 @@
                 <li><i class="fa-solid fa-check"></i> Limitsiz yoxlama</li>
                 <li><i class="fa-solid fa-check"></i> Ətraflı məlumat </li>
                 <li><i class="fa-solid fa-check"></i> Dual IMEI yoxlama</li>
-            
-         </ul>
+            </ul>
             <a href="register.html" class="tariff-btn">Premium al</a>
         </div>
-    </div>
-</section>
-
-<!-- ГАЛЕРЕЯ СКРИНШОТОВ -->
-<section class="gallery-section">
-    <h2>MÜASİR VƏ ZÖVQLÜ DİZAYN</h2>
-    <div class="gallery-grid">
-        <img src="authscreen.jpg" alt="Tətbiqə Giriş Ekranı" class="gallery-item">
-        <img src="dual_imei_screen.jpg" alt="Dual IMEI Yoxlanışı" class="gallery-item">
-        <img src="results1.jpg" alt="Axtarış Nəticələri 1" class="gallery-item">
-        <img src="results2.jpg" alt="Axtarış Nəticələri 2" class="gallery-item">
     </div>
 </section>
 
@@ -745,7 +602,6 @@
     <div class="footer-links">
         <a href="privacy.html">Məxfilik Siyasəti</a>
         <a href="terms.html">İstifadə Şərtləri</a>
-        
     </div>
 
     <div class="footer-copyright">
