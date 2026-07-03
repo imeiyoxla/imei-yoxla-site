@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IMEI Yoxla - Cihazınızın statusunu yoxlayın</title>
     
-    <!-- Иконка сайта (Favicon) -->
+    <!-- İkonка сайта (Favicon) -->
     <link rel="icon" type="image/png" href="Logo.png">
     
     <!-- Современный шрифт Inter -->
@@ -27,30 +27,121 @@
         line-height: 1.6;
     }
 
-    .hero {
-        padding: 80px 20px 40px 20px;
+    /* ВЕРХНЕЕ МЕНЮ (NAVBAR) КАК НА СКРИНШОТЕ */
+    .header-nav {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
-        text-align: center;
+        background: transparent;
+    }
+
+    .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: #FFFFFF;
+        font-weight: 800;
+        font-size: 22px;
+    }
+
+    .nav-logo img {
+        width: 35px;
+        height: 35px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 229, 255, 0.3);
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: #A0AABF;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+        transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+        color: #00E5FF;
+    }
+
+    .nav-auth .nav-register-btn {
+        background: #FFFFFF;
+        color: #0B101E;
+        padding: 10px 24px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 800;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .nav-auth .nav-register-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+    }
+
+    /* ДВУХКОЛОНОЧНЫЙ ГЛАВНЫЙ ЭКРАН (HERO) */
+    .hero {
+        padding: 60px 20px 80px 20px;
         background: radial-gradient(circle at center, #162032 0%, #0B101E 100%);
     }
 
-    .logo-img {
-        width: 100px;
-        height: 100px;
-        object-fit: contain;
-        margin-bottom: 20px;
-        border-radius: 22px;
-        box-shadow: 0 8px 25px rgba(0, 229, 255, 0.3);
+    .hero-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+    }
+
+    /* Левая колонка с текстом */
+    .hero-content {
+        flex: 1;
+        text-align: left;
+    }
+
+    /* Плашка версии со скрина */
+    .version-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(0, 229, 255, 0.1);
+        border: 1px solid rgba(0, 229, 255, 0.2);
+        color: #00E5FF;
+        padding: 6px 16px;
+        border-radius: 50px;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 25px;
+    }
+
+    .version-badge::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        background-color: #00E5FF;
+        border-radius: 50px;
     }
 
     h1 {
-        font-size: 56px;
+        font-size: 54px;
         font-weight: 800;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         letter-spacing: -1px;
+        line-height: 1.2;
     }
 
     .highlight {
@@ -58,65 +149,86 @@
     }
 
     .subtitle {
-        font-size: 20px;
+        font-size: 18px;
         color: #A0AABF;
         margin-bottom: 35px;
-        max-width: 600px;
+        max-width: 540px;
         font-weight: 400;
     }
 
+    /* Кнопки в ряд */
     .hero-actions {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
-        gap: 14px;
+        gap: 15px;
         flex-wrap: wrap;
-        margin-bottom: 50px;
     }
 
-    .download-btn,
-    .register-btn {
-        background: linear-gradient(135deg, #00E5FF 0%, #00B4D8 100%);
+    .download-btn {
+        background: #FFFFFF;
         color: #0B101E;
-        padding: 18px 45px;
-        border-radius: 50px;
+        padding: 14px 32px;
+        border-radius: 12px;
         text-decoration: none;
         font-weight: 800;
-        font-size: 18px;
+        font-size: 16px;
         transition: all 0.3s ease;
-        box-shadow: 0 8px 25px rgba(0, 229, 255, 0.25);
         display: flex;
         align-items: center;
         gap: 10px;
     }
 
-    .register-btn {
-        background: transparent;
-        color: #00E5FF;
-        border: 2px solid rgba(0, 229, 255, 0.7);
-        box-shadow: none;
+    .telegram-btn {
+        background: rgba(255, 255, 255, 0.05);
+        color: #FFFFFF;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 14px 32px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 800;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
 
-    .download-btn:hover,
-    .register-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 30px rgba(0, 229, 255, 0.4);
+    .download-btn:hover {
+        background: #00E5FF;
+        color: #0B101E;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 229, 255, 0.3);
     }
 
-    .app-screenshot {
-        max-width: 290px;
+    .telegram-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+    }
+
+    /* Правая колонка: Тут будет картинка с двумя телефонами */
+    .hero-image-wrapper {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .app-screenshot-main {
+        max-width: 520px;
         width: 100%;
         height: auto;
-        border-radius: 32px;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
-        border: 4px solid #1c2538;
+        border-radius: 24px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
         transition: transform 0.4s ease;
     }
 
-    .app-screenshot:hover {
-        transform: scale(1.03);
+    .app-screenshot-main:hover {
+        transform: translateY(-5px);
     }
 
+    /* ОСТАЛЬНЫЕ СЕКЦИИ БЕЗ ИЗМЕНЕНИЙ В СТИЛЯХ */
     .features {
         padding: 80px 20px;
         max-width: 1100px;
@@ -168,7 +280,6 @@
         font-size: 15px;
     }
 
-    /* СЕКЦИЯ ТАРИФОВ (ДЛЯ GOOGLE ADS) */
     .tariffs {
         padding: 60px 20px;
         max-width: 1000px;
@@ -303,7 +414,6 @@
         border-color: #00E5FF;
     }
 
-    /* ОБНОВЛЕННЫЙ ПОДВАЛ С КОНТАКТАМИ И ПОЛИТИКОЙ */
     .footer {
         background: #070B14;
         text-align: center;
@@ -358,23 +468,33 @@
         font-size: 14px;
     }
 
-    @media (max-width: 560px) {
-        .hero {
-            padding-top: 48px;
+    /* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ СМАРТФОНОВ */
+    @media (max-width: 992px) {
+        .header-nav {
+            flex-direction: column;
+            gap: 15px;
         }
-
-        h1 {
-            font-size: 42px;
+        .nav-links {
+            gap: 20px;
         }
-
+        .hero-container {
+            flex-direction: column;
+            text-align: center;
+        }
+        .hero-content {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
         .hero-actions {
-            width: 100%;
-        }
-
-        .download-btn,
-        .register-btn {
-            width: min(100%, 330px);
             justify-content: center;
+        }
+        .hero-image-wrapper {
+            justify-content: center;
+        }
+        h1 {
+            font-size: 40px;
         }
     }
 </style>
@@ -382,28 +502,53 @@
 
 <body>
 
-<section class="hero">
-    <img src="Logo.png" alt="IMEI Yoxla App Logo" class="logo-img" onerror="this.style.display='none'">
-    
-    <h1>IMEI <span class="highlight">Yoxla</span></h1>
-    
-    <p class="subtitle">
-        Telefonun IMEI məlumatlarını saniyələr içində öyrənin.
-    </p>
-    
-    <div class="hero-actions">
-        <a id="download-btn" class="download-btn" href="#">
-            <i class="fa-brands fa-android"></i> APK Yüklə
-        </a>
-        <a class="register-btn" href="register.html">
-            <i class="fa-solid fa-user-plus"></i> Qeydiyyat
-        </a>
+<!-- ВЕРХНЯЯ НАВИГАЦИЯ -->
+<header class="header-nav">
+    <a href="#" class="nav-logo">
+        <img src="Logo.png" alt="IMEI Yoxla Logo" onerror="this.style.display='none'">
+        <span>IMEI <span class="highlight">Yoxla</span></span>
+    </a>
+    <ul class="nav-links">
+        <li><a href="#features">İmkanlar</a></li>
+        <li><a href="#tariffs">Tariflər</a></li>
+    </ul>
+    <div class="nav-auth">
+        <a href="register.html" class="nav-register-btn">Qeydiyyat <i class="fa-solid fa-arrow-right"></i></a>
     </div>
+</header>
 
-    <img src="single_imei_screen.jpg" alt="IMEI yoxlama prosesi ekranı" class="app-screenshot">
+<!-- ГЛАВНЫЙ ЭКРАН (HERO) -->
+<section class="hero">
+    <div class="hero-container">
+        <!-- Левая колонка -->
+        <div class="hero-content">
+            <div class="version-badge" id="version-display">Yüklənir...</div>
+            
+            <h1>IMEI <span class="highlight">Yoxla</span></h1>
+            
+            <p class="subtitle">
+                Telefonun IMEI məlumatlarını saniyələr içində öyrənin. Rəsmi dövlət bazalarından sürətli inteqrasiya və təhlükəsiz yoxlanış.
+            </p>
+            
+            <div class="hero-actions">
+                <a id="download-btn" class="download-btn" href="#">
+                    <i class="fa-brands fa-android"></i> APK Yüklə
+                </a>
+                <a class="telegram-btn" href="https://t.me/imeiyoxla_support" target="_blank">
+                    <i class="fa-brands fa-telegram"></i> Telegram
+                </a>
+            </div>
+        </div>
+
+        <!-- Правая колонка (Твоя картинка с 2 телефонами) -->
+        <div class="hero-image-wrapper">
+            <img src="two_phones_mockup.png" alt="IMEI Yoxla App Mockup" class="app-screenshot-main" onerror="this.src='single_imei_screen.jpg'">
+        </div>
+    </div>
 </section>
 
-<section class="features">
+<!-- СЕКЦИЯ ИМКАНЛАР -->
+<section class="features" id="features">
     <h2>İmkanlar</h2>
     <div class="grid">
         <div class="card">
@@ -445,10 +590,9 @@
 </section>
 
 <!-- СЕКЦИЯ ТАРИФОВ -->
-<section class="tariffs">
+<section class="tariffs" id="tariffs">
     <h2>Tariflər və Paketlər</h2>
     <div class="tariffs-grid">
-        <!-- Бесплатный тариф -->
         <div class="tariff-card">
             <h3>Pulsuz</h3>
             <div class="tariff-price">0 ₼ <span>/ ay</span></div>
@@ -461,7 +605,6 @@
             <a href="register.html" class="tariff-btn">İstifadəyə başla</a>
         </div>
 
-        <!-- Платный тариф -->
         <div class="tariff-card premium-card">
             <h3>Premium</h3>
             <div class="tariff-price">5 ₼ <span>/ ay</span></div>
@@ -476,6 +619,7 @@
     </div>
 </section>
 
+<!-- ГАЛЕРЕЯ СКРИНШОТОВ -->
 <section class="gallery-section">
     <h2>MÜASİR VƏ ZÖVQLÜ DİZAYN</h2>
     <div class="gallery-grid">
@@ -486,20 +630,17 @@
     </div>
 </section>
 
-<!-- ОБНОВЛЕННЫЙ FOOTER -->
+<!-- FOOTER -->
 <div class="footer">
-    <!-- Контакты для связи (Требование Google Ads) -->
     <div class="footer-contacts">
         <a href="mailto:support@imeiyoxla.com"><i class="fa-solid fa-envelope"></i> support@imeiyoxla.com</a>
         <a href="https://t.me/imeiyoxla_support" target="_blank"><i class="fa-brands fa-telegram"></i> @imeiyoxla_support</a>
     </div>
 
-    <!-- Юридические страницы (Требование Google Ads) -->
     <div class="footer-links">
         <a href="privacy.html">Məxfilik Siyasəti (Privacy Policy)</a>
         <a href="terms.html">İstifadə Şərtləri (Terms of Service)</a>
         <a href="refund.html">Ödənişin Qaytarılması (Refund Policy)</a>
-        <a href="contact.html">Bizimlə Əlaqə</a>
     </div>
 
     <div class="footer-copyright">
@@ -508,6 +649,7 @@
 </div>
 
 </body>
+
 <script>
 (function () {
     const hash = new URLSearchParams(location.hash.substring(1));
@@ -523,23 +665,23 @@
 fetch('https://api.github.com/repos/imeiyoxla/imei-yoxla-site/releases/latest')
   .then(response => response.json())
   .then(data => {
-
     const btn = document.getElementById('download-btn');
+    const versionDisplay = document.getElementById('version-display');
+    const apk = data.assets.find(asset => asset.name.endsWith('.apk'));
 
-    const apk = data.assets.find(asset =>
-      asset.name.endsWith('.apk')
-    );
+    if (versionDisplay && data.tag_name) {
+      versionDisplay.innerText = "Versiya " + data.tag_name;
+    }
 
     if (apk && btn) {
       btn.href = apk.browser_download_url;
-      btn.innerHTML =
-        '<i class="fa-brands fa-android"></i> APK Yüklə (' +
-        data.tag_name +
-        ')';
+      btn.innerHTML = '<i class="fa-brands fa-android"></i> APK Yüklə';
     }
   })
   .catch(error => {
     console.error(error);
+    const versionDisplay = document.getElementById('version-display');
+    if (versionDisplay) versionDisplay.innerText = "Son Versiya";
   });
 </script>
 </html>
