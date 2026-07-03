@@ -1,77 +1,87 @@
-<!-- ВСТАВЬ ЭТО В HTML ТАМ, ГДЕ БЫЛ БЛОК HERO -->
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DHelperAz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    :root {
+        --primary-color: #8B5CF6;
+        --bg-dark: #07090E;
+        --card-bg: #111622;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    body { background: var(--bg-dark); color: #FFFFFF; }
+
+    .header-nav { max-width: 1200px; margin: 0 auto; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; font-weight: 800; font-size: 22px; }
+    
+    .dropdown { position: relative; cursor: pointer; color: #A0AABF; font-weight: 600; }
+    .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background: var(--card-bg); border-radius: 12px; padding: 10px; margin-top: 10px; z-index: 100; min-width: 150px; }
+    .dropdown-content a { display: block; padding: 8px; color: #fff; text-decoration: none; font-size: 14px; }
+
+    .hero { padding: 60px 20px; max-width: 1200px; margin: 0 auto; display: flex; gap: 40px; align-items: flex-start; }
+    .hero-content { flex: 1; }
+    h1 { font-size: 54px; margin-bottom: 20px; }
+    .highlight { color: var(--primary-color); }
+    
+    .download-btn { background: var(--primary-color); color: #fff; padding: 14px 24px; border-radius: 12px; text-decoration: none; font-weight: 800; display: inline-flex; align-items: center; gap: 10px; }
+    
+    .hero-stats-column { display: flex; flex-direction: column; gap: 15px; margin-top: 40px; max-width: 350px; }
+    .stat-card { background: var(--card-bg); padding: 15px; border-radius: 14px; display: flex; align-items: center; gap: 15px; }
+    
+    .hero-screenshots { display: flex; gap: 15px; flex: 1; justify-content: center; }
+    .sc-img { width: 160px; border-radius: 20px; border: 2px solid rgba(139, 92, 246, 0.2); }
+
+    @media (max-width: 992px) { .hero { flex-direction: column; } .hero-screenshots { display: none; } }
+</style>
+</head>
+<body>
+
+<header class="header-nav">
+    <a href="#" class="nav-logo"><span>DHelper <span class="highlight">Az</span></span></a>
+    <div class="dropdown" onclick="document.querySelector('.dropdown-content').classList.toggle('show')">
+        Tariflər <i class="fa-solid fa-chevron-down"></i>
+        <div class="dropdown-content" style="display: none;">
+            <a href="#">7 Gün Pulsuz</a><a href="#">10 ₼ - 1 Ay</a>
+            <a href="#">15 ₼ - 2 Ay</a><a href="#">25 ₼ - 3 Ay</a>
+        </div>
+    </div>
+</header>
+
 <section class="hero">
-    <div class="hero-container">
-        <!-- Левая колонка -->
-        <div class="hero-content">
-            <h1>DHelper <span class="highlight">Az</span></h1>
-            <p class="subtitle">Sənin Rəqəmsal Köməkçin ☺️</p>
-            
-            <div class="hero-actions">
-                <!-- ВЕРСИЯ ТЕПЕРЬ В КНОПКЕ -->
-                <a id="download-btn" class="download-btn" href="#">
-                    <i class="fa-brands fa-android"></i> APK Yüklə <span id="version-text" style="margin-left: 8px; opacity: 0.7; font-size: 12px;"></span>
-                </a>
-                <a class="telegram-btn" href="https://t.me/dhelperaz" target="_blank">
-                    <i class="fa-brands fa-telegram"></i> Telegram
-                </a>
-            </div>
-
-            <!-- Статистика -->
-            <div class="hero-stats-column">
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fa-solid fa-bolt"></i></div>
-                    <div class="stat-info"><h3>150 000+</h3><p>Uğurlu yoxlanış</p></div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-                    <div class="stat-info"><h3>Bütün</h3><p>Dəstəklənən Modellər</p></div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                    <div class="stat-info"><h3>99.9%</h3><p>24/7</p></div>
-                </div>
-            </div>
+    <div class="hero-content">
+        <h1>DHelper <span class="highlight">Az</span></h1>
+        <p>Sənin Rəqəmsal Köməkçin ☺️</p>
+        <div style="margin-top: 20px;">
+            <a id="download-btn" class="download-btn" href="#">
+                <i class="fa-brands fa-android"></i> APK Yüklə <span id="version-text" style="margin-left: 8px; opacity: 0.7;"></span>
+            </a>
         </div>
 
-        <!-- ПРАВАЯ ОБЛАСТЬ (3 СКРИНШОТА) -->
-        <div class="hero-screenshots">
-            <img src="screenshot1.jpg" alt="App Screen 1" class="sc-img">
-            <img src="screenshot2.jpg" alt="App Screen 2" class="sc-img">
-            <img src="screenshot3.jpg" alt="App Screen 3" class="sc-img">
+        <div class="hero-stats-column">
+            <div class="stat-card"><div class="stat-icon"><i class="fa-solid fa-bolt"></i></div><div><h3>150 000+</h3><p>Uğurlu yoxlanış</p></div></div>
+            <div class="stat-card"><div class="stat-icon"><i class="fa-solid fa-mobile-screen"></i></div><div><h3>Bütün</h3><p>Dəstəklənən Modellər</p></div></div>
+            <div class="stat-card"><div class="stat-icon"><i class="fa-solid fa-shield-halved"></i></div><div><h3>99.9%</h3><p>24/7</p></div></div>
         </div>
+    </div>
+
+    <div class="hero-screenshots">
+        <img src="screenshot1.jpg" alt="1" class="sc-img"><img src="screenshot2.jpg" alt="2" class="sc-img"><img src="screenshot3.jpg" alt="3" class="sc-img">
     </div>
 </section>
 
-<style>
-    /* Стиль для области скриншотов */
-    .hero-screenshots {
-        display: flex;
-        gap: 15px;
-        flex: 1;
-        justify-content: flex-end;
-    }
-    .sc-img {
-        width: 180px;
-        border-radius: 20px;
-        border: 2px solid rgba(139, 92, 246, 0.2);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        transition: transform 0.3s;
-    }
-    .sc-img:hover { transform: scale(1.05); }
-    
-    @media (max-width: 992px) {
-        .hero-screenshots { display: none; } /* Скрываем на мобильных, если нужно */
-    }
-</style>
-
 <script>
-// ОБНОВЛЕНИЕ ВЕРСИИ В КНОПКЕ
-fetch('https://api.github.com/repos/imeiyoxla/imei-yoxla-site/releases/latest')
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById('version-text').innerText = data.tag_name;
-    const btn = document.getElementById('download-btn');
-    const apk = data.assets.find(a => a.name.endsWith('.apk'));
-    if(apk) btn.href = apk.browser_download_url;
-  });
+    fetch('https://api.github.com/repos/imeiyoxla/imei-yoxla-site/releases/latest')
+    .then(res => res.json()).then(data => {
+        document.getElementById('version-text').innerText = data.tag_name;
+        const btn = document.getElementById('download-btn');
+        const apk = data.assets.find(a => a.name.endsWith('.apk'));
+        if(apk) btn.href = apk.browser_download_url;
+    });
 </script>
+</body>
+</html>
