@@ -81,49 +81,39 @@
         color: var(--primary-color);
     }
 
-    /* ВЫПАДАЮЩИЙ СПИСОК ТАРИФОВ */
-    .dropdown {
-        position: relative;
-    }
     
-    .dropdown-content {
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        transform: translateX(-50%) translateY(15px);
-        background: var(--card-bg);
-        min-width: 170px;
-        border: 1px solid var(--card-border);
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        z-index: 100;
-        padding: 10px 0;
-    }
-    
-    .dropdown-content.show {
-        opacity: 1;
-        visibility: visible;
-        transform: translateX(-50%) translateY(10px);
-    }
-    
-    .dropdown-content a {
-        display: block;
-        padding: 10px 20px;
-        color: #FFFFFF;
-        text-decoration: none;
-        font-size: 14px;
-        font-weight: 600;
-        text-align: center;
-        transition: background 0.3s, color 0.3s;
-    }
-    
-    .dropdown-content a:hover {
-        background: rgba(139, 92, 246, 0.15);
-        color: var(--primary-color);
-    }
+.price-bar{
+display:flex;
+align-items:center;
+gap:10px;
+}
+.price-title{
+color:#fff;
+font-weight:700;
+margin-right:6px;
+}
+.price-item{
+padding:8px 14px;
+border-radius:999px;
+background:#171c29;
+border:1px solid rgba(139,92,246,.35);
+font-weight:700;
+font-size:14px;
+transition:.25s;
+}
+.price-item:hover{
+transform:translateY(-2px);
+background:#8B5CF6;
+box-shadow:0 0 18px rgba(139,92,246,.45);
+}
+.price-item.free{
+background:#12351f;
+border-color:#2ecc71;
+}
+.price-item.premium{
+background:#3b2d10;
+border-color:#f1c40f;
+}
 
     .nav-auth .nav-register-btn {
         background: var(--primary-color);
@@ -440,20 +430,13 @@
         <img src="Logo.png" alt="IMEI Yoxla Logo" onerror="this.style.display='none'">
         <span>Digital Helper <span class="highlight">Az</span></span>
     </a>
-    <ul class="nav-links">
-        <li class="dropdown">
-            <a href="#" class="dropbtn" onclick="toggleDropdown(event)">
-               Qiymətlər <i class="fa-solid fa-chevron-down" style="font-size: 12px; pointer-events: none;"></i>
-            </a>
-            <!-- Выпадающий список тарифов -->
-            <div class="dropdown-content" id="tariffsDropdown">
-                <a href="#">7 Gün Pulsuz</a>
-                <a href="#">10 ₼ - 1 Ay</a>
-                <a href="#">15 ₼ - 2 Ay</a>
-                <a href="#">25 ₼ - 3 Ay</a>
-            </div>
-        </li>
-    </ul>
+    <div class="nav-links price-bar">
+        <span class="price-title">Qiymətlər</span>
+        <span class="price-item free">🟢 7 Gün Pulsuz</span>
+        <span class="price-item">1 Ay • 10₼</span>
+        <span class="price-item">2 Ay • 15₼</span>
+        <span class="price-item premium">3 Ay • 25₼</span>
+    </div>
     <div class="nav-auth">
         <a href="register.html" class="nav-register-btn">Qeydiyyat <i class="fa-solid fa-arrow-right"></i></a>
     </div>
@@ -562,26 +545,7 @@ fetch('https://api.github.com/repos/imeiyoxla/imei-yoxla-site/releases/latest')
 
 </body>
 
-<script>
-/* Скрипт для выпадающего меню тарифов */
-function toggleDropdown(e) {
-    e.preventDefault();
-    document.getElementById("tariffsDropdown").classList.toggle("show");
-}
 
-// Закрываем меню, если кликнули вне его
-window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        for (var i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
-    }
-}
-</script>
 
 <script>
 (function () {
