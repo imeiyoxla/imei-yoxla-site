@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="IMEI Yoxla hesabı yaradın və e-poçt ünvanınızı OTP kodu ilə təsdiqləyin.">
+    <title>Qeydiyyat — IMEI Yoxla</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="register.css">
+    <script src="register.js" defer></script>
+</head>
+<body>
+    <main class="auth-shell">
+        <a class="back-link" href="index.html">
+            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+            Ana səhifə
+        </a>
+
+        <section class="auth-card" aria-labelledby="page-title">
+            <header class="brand">
+                <img src="Logo.png" alt="IMEI Yoxla" class="brand-logo">
+                <div>
+                    <p class="eyebrow">IMEI Yoxla</p>
+                    <h1 id="page-title">Hesab yaradın</h1>
+                </div>
+            </header>
+
+            <ol class="steps" aria-label="Qeydiyyat mərhələləri">
+                <li class="step is-active" data-step-indicator="1">
+                    <span>1</span>
+                    <small>Məlumatlar</small>
+                </li>
+                <li class="step-line" aria-hidden="true"></li>
+                <li class="step" data-step-indicator="2">
+                    <span>2</span>
+                    <small>OTP təsdiqi</small>
+                </li>
+            </ol>
+
+            <div id="device-warning" class="notice warning" hidden>
+                <i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i>
+                <div>
+                    <strong>Qeydiyyatı tətbiqdən açın</strong>
+                    <p>Telefonu hesabınıza təhlükəsiz bağlamaq üçün tətbiqdə “Qeydiyyatdan keçin” düyməsinə toxunun.</p>
+                </div>
+            </div>
+
+            <form id="registration-form" class="form-panel" novalidate>
+                <p class="form-intro">Məlumatları daxil edin. E-poçt ünvanınıza təsdiq kodu göndəriləcək.</p>
+
+                <label class="field">
+                    <span>İstifadəçi adı</span>
+                    <span class="input-wrap">
+                        <i class="fa-regular fa-user" aria-hidden="true"></i>
+                        <input id="username" name="username" type="text" minlength="3" maxlength="32"
+                               autocomplete="username" placeholder="İstifadəçi adınız" required>
+                    </span>
+                </label>
+
+                <label class="field">
+                    <span>E-poçt ünvanı</span>
+                    <span class="input-wrap">
+                        <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+                        <input id="email" name="email" type="email" maxlength="254"
+                               autocomplete="email" inputmode="email" placeholder="ad@example.com" required>
+                    </span>
+                </label>
+
+                <label class="field">
+                    <span>Şifrə</span>
+                    <span class="input-wrap">
+                        <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                        <input id="password" name="password" type="password" minlength="6" maxlength="128"
+                               autocomplete="new-password" placeholder="Ən azı 6 simvol" required>
+                        <button class="password-toggle" type="button" data-password-toggle="password" aria-label="Şifrəni göstər">
+                            <i class="fa-regular fa-eye" aria-hidden="true"></i>
+                        </button>
+                    </span>
+                </label>
+
+                <label class="field">
+                    <span>Şifrəni təkrarlayın</span>
+                    <span class="input-wrap">
+                        <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                        <input id="confirm-password" name="confirmPassword" type="password" minlength="6" maxlength="128"
+                               autocomplete="new-password" placeholder="Şifrəni yenidən daxil edin" required>
+                        <button class="password-toggle" type="button" data-password-toggle="confirm-password" aria-label="Şifrəni göstər">
+                            <i class="fa-regular fa-eye" aria-hidden="true"></i>
+                        </button>
+                    </span>
+                </label>
+
+                <p id="registration-message" class="form-message" role="alert" aria-live="polite"></p>
+
+                <button id="registration-submit" class="primary-button" type="submit">
+                    <span>OTP kodu göndər</span>
+                    <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </button>
+            </form>
+
+            <form id="verification-form" class="form-panel" novalidate hidden>
+                <div class="otp-icon" aria-hidden="true">
+                    <i class="fa-solid fa-envelope-circle-check"></i>
+                </div>
+                <h2>E-poçtunuzu təsdiqləyin</h2>
+                <p class="form-intro">Təsdiq kodunu <strong id="verification-email"></strong> ünvanına göndərdik.</p>
+
+                <label class="field otp-field">
+                    <span>OTP kodu</span>
+                    <input id="otp-code" name="code" type="text" minlength="4" maxlength="8"
+                           autocomplete="one-time-code" inputmode="numeric" pattern="[0-9]*" placeholder="••••••" required>
+                </label>
+
+                <p id="verification-message" class="form-message" role="alert" aria-live="polite"></p>
+
+                <button id="verification-submit" class="primary-button" type="submit">
+                    <span>Hesabı təsdiqlə</span>
+                    <i class="fa-solid fa-check" aria-hidden="true"></i>
+                </button>
+                <button id="back-to-registration" class="text-button" type="button">Məlumatları dəyiş</button>
+            </form>
+
+            <section id="success-panel" class="success-panel" hidden aria-live="polite">
+                <div class="success-icon" aria-hidden="true">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h2>Qeydiyyat tamamlandı!</h2>
+                <p>Hesabınız təsdiqləndi. Brauzeri bağlayın və IMEI Yoxla tətbiqində istifadəçi adı və şifrənizlə daxil olun.</p>
+                <a class="primary-button button-link" href="index.html">
+                    <span>Ana səhifəyə qayıt</span>
+                    <i class="fa-solid fa-house" aria-hidden="true"></i>
+                </a>
+            </section>
+
+            <footer class="card-footer">
+                Hesabınız var? <span>Tətbiqdən daxil olun.</span>
+            </footer>
+        </section>
+    </main>
+</body>
+</html>
