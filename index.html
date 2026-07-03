@@ -81,6 +81,50 @@
         color: var(--primary-color);
     }
 
+    /* ВЫПАДАЮЩИЙ СПИСОК ТАРИФОВ */
+    .dropdown {
+        position: relative;
+    }
+    
+    .dropdown-content {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(15px);
+        background: var(--card-bg);
+        min-width: 170px;
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 100;
+        padding: 10px 0;
+    }
+    
+    .dropdown-content.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(10px);
+    }
+    
+    .dropdown-content a {
+        display: block;
+        padding: 10px 20px;
+        color: #FFFFFF;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        text-align: center;
+        transition: background 0.3s, color 0.3s;
+    }
+    
+    .dropdown-content a:hover {
+        background: rgba(139, 92, 246, 0.15);
+        color: var(--primary-color);
+    }
+
     .nav-auth .nav-register-btn {
         background: var(--primary-color);
         color: #FFFFFF;
@@ -295,106 +339,6 @@
         color: #6B778D;
     }
 
-    /* СЕКЦИЯ ТАРИФОВ */
-    .tariffs {
-        padding: 60px 20px;
-        max-width: 1000px;
-        margin: auto;
-    }
-
-    .tariffs h2 {
-        text-align: center;
-        margin-bottom: 40px;
-        font-size: 36px;
-        font-weight: 800;
-    }
-
-    .tariffs-grid {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        flex-wrap: wrap;
-    }
-
-    .tariff-card {
-        background: var(--card-bg);
-        padding: 40px 30px;
-        border-radius: 24px;
-        border: 1px solid var(--card-border);
-        width: 100%;
-        max-width: 340px;
-        transition: all 0.3s ease;
-        text-align: center;
-    }
-
-    .tariff-card:hover {
-        transform: translateY(-5px);
-        border-color: rgba(139, 92, 246, 0.4);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    }
-
-    .tariff-price {
-        font-size: 42px;
-        font-weight: 800;
-        color: var(--primary-color);
-        margin: 20px 0;
-    }
-
-    .tariff-price span {
-        font-size: 16px;
-        color: #A0AABF;
-        font-weight: 400;
-    }
-
-    .tariff-features {
-        list-style: none;
-        margin-bottom: 30px;
-        text-align: left;
-    }
-
-    .tariff-features li {
-        margin-bottom: 12px;
-        color: #A0AABF;
-        font-size: 16px;
-    }
-
-    .tariff-features li i.fa-check {
-        color: var(--primary-color);
-        margin-right: 10px;
-    }
-
-    .tariff-features li i.fa-xmark {
-        color: #6B778D;
-        margin-right: 10px;
-    }
-
-    .tariff-btn {
-        display: block;
-        padding: 15px;
-        background: transparent;
-        border: 2px solid var(--primary-color);
-        color: var(--primary-color);
-        text-decoration: none;
-        border-radius: 50px;
-        font-weight: 600;
-        transition: 0.3s;
-    }
-
-    .tariff-btn:hover {
-        background: var(--primary-color);
-        color: #FFFFFF;
-    }
-
-    .premium-card .tariff-btn {
-        background: var(--primary-color);
-        color: #FFFFFF;
-    }
-
-    .premium-card .tariff-btn:hover {
-        background: transparent;
-        color: var(--primary-color);
-    }
-
     /* FOOTER */
     .footer {
         background: #040508;
@@ -491,7 +435,18 @@
         <span>DHelper <span class="highlight">Az</span></span>
     </a>
     <ul class="nav-links">
-        <li><a href="#tariffs">Tariflər</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropbtn" onclick="toggleDropdown(event)">
+                Tariflər <i class="fa-solid fa-chevron-down" style="font-size: 12px; pointer-events: none;"></i>
+            </a>
+            <!-- Выпадающий список тарифов -->
+            <div class="dropdown-content" id="tariffsDropdown">
+                <a href="#">7 Gün Pulsuz</a>
+                <a href="#">10 ₼ - 1 Ay</a>
+                <a href="#">15 ₼ - 2 Ay</a>
+                <a href="#">25 ₼ - 3 Ay</a>
+            </div>
+        </li>
     </ul>
     <div class="nav-auth">
         <a href="register.html" class="nav-register-btn">Qeydiyyat <i class="fa-solid fa-arrow-right"></i></a>
@@ -508,7 +463,7 @@
             <h1>DHelper <span class="highlight">Az</span></h1>
             
             <p class="subtitle">
-                Sənin  Rəqəmsal  Köməkçin ☺️
+                Sənin Rəqəmsal Köməkçin ☺️
             </p>
             
             <div class="hero-actions">
@@ -521,14 +476,14 @@
             </div>
         </div>
 
-        <!-- Правая колонка (Картинка с 2 телефонами) -->
+        <!-- Правая колонка -->
         <div class="hero-image-wrapper">
             <img src="two_phones_mockup.png" alt="IMEI Yoxla App Mockup" class="app-screenshot-main" onerror="this.src='single_imei_screen.jpg'">
         </div>
     </div>
 </section>
 
-<!-- БЛОК СТАТИСТИКИ КАК НА МАКЕТЕ -->
+<!-- БЛОК СТАТИСТИКИ -->
 <section class="stats-section">
     <div class="stats-grid">
         <div class="stat-card">
@@ -566,32 +521,6 @@
     </div>
 </section>
 
-<!-- СЕКЦИЯ ТАРИФОВ -->
-<section class="tariffs" id="tariffs">
-    <h2>Tariflər</h2>
-    <div class="tariffs-grid">
-        <div class="tariff-card">
-             <h3>Pulsuz</h3>
-            <div class="tariff-price">0 ₼ <span>/ ay</span></div>
-            <ul class="tariff-features">
-                <li><i class="fa-solid fa-check"></i> 7 Sınaq müddəti</li>
-            </ul>
-            <a href="register.html" class="tariff-btn">İstifadəyə başla</a>
-        </div>
-
-        <div class="tariff-card premium-card">
-            <h3>Premium</h3>
-            <div class="tariff-price">10 ₼ <span>/ ay</span></div>
-            <ul class="tariff-features">
-                <li><i class="fa-solid fa-check"></i> Limitsiz yoxlama</li>
-                <li><i class="fa-solid fa-check"></i> Ətraflı məlumat </li>
-                <li><i class="fa-solid fa-check"></i> Dual IMEI yoxlama</li>
-            </ul>
-            <a href="register.html" class="tariff-btn">Premium al</a>
-        </div>
-    </div>
-</section>
-
 <!-- FOOTER -->
 <div class="footer">
     <div class="footer-contacts">
@@ -610,6 +539,27 @@
 </div>
 
 </body>
+
+<script>
+/* Скрипт для выпадающего меню тарифов */
+function toggleDropdown(e) {
+    e.preventDefault();
+    document.getElementById("tariffsDropdown").classList.toggle("show");
+}
+
+// Закрываем меню, если кликнули вне его
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
+</script>
 
 <script>
 (function () {
