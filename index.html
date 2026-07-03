@@ -14,6 +14,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
+    :root {
+        --primary-color: #8B5CF6; /* Неоновый фиолетовый */
+        --primary-glow: rgba(139, 92, 246, 0.3);
+        --bg-dark: #07090E;
+        --card-bg: #111622;
+        --card-border: rgba(255, 255, 255, 0.05);
+    }
+
     * {
         margin: 0;
         padding: 0;
@@ -22,12 +30,12 @@
     }
 
     body {
-        background: #0B101E;
+        background: var(--bg-dark);
         color: #FFFFFF;
         line-height: 1.6;
     }
 
-    /* ВЕРХНЕЕ МЕНЮ (NAVBAR) КАК НА СКРИНШОТЕ */
+    /* ВЕРХНЕЕ МЕНЮ (NAVBAR) */
     .header-nav {
         max-width: 1200px;
         margin: 0 auto;
@@ -52,7 +60,7 @@
         width: 35px;
         height: 35px;
         border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0, 229, 255, 0.3);
+        box-shadow: 0 4px 12px var(--primary-glow);
     }
 
     .nav-links {
@@ -70,12 +78,12 @@
     }
 
     .nav-links a:hover {
-        color: #00E5FF;
+        color: var(--primary-color);
     }
 
     .nav-auth .nav-register-btn {
-        background: #FFFFFF;
-        color: #0B101E;
+        background: var(--primary-color);
+        color: #FFFFFF;
         padding: 10px 24px;
         border-radius: 50px;
         text-decoration: none;
@@ -89,13 +97,14 @@
 
     .nav-auth .nav-register-btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        background: #7C3AED;
+        box-shadow: 0 8px 25px var(--primary-glow);
     }
 
     /* ДВУХКОЛОНОЧНЫЙ ГЛАВНЫЙ ЭКРАН (HERO) */
     .hero {
         padding: 60px 20px 80px 20px;
-        background: radial-gradient(circle at center, #162032 0%, #0B101E 100%);
+        background: radial-gradient(circle at center, #161224 0%, var(--bg-dark) 100%);
     }
 
     .hero-container {
@@ -107,20 +116,18 @@
         gap: 40px;
     }
 
-    /* Левая колонка с текстом */
     .hero-content {
         flex: 1;
         text-align: left;
     }
 
-    /* Плашка версии со скрина */
     .version-badge {
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        background: rgba(0, 229, 255, 0.1);
-        border: 1px solid rgba(0, 229, 255, 0.2);
-        color: #00E5FF;
+        background: rgba(139, 92, 246, 0.1);
+        border: 1px solid rgba(139, 92, 246, 0.2);
+        color: var(--primary-color);
         padding: 6px 16px;
         border-radius: 50px;
         font-size: 13px;
@@ -132,8 +139,9 @@
         content: '';
         width: 6px;
         height: 6px;
-        background-color: #00E5FF;
+        background-color: var(--primary-color);
         border-radius: 50px;
+        box-shadow: 0 0 8px var(--primary-color);
     }
 
     h1 {
@@ -145,7 +153,7 @@
     }
 
     .highlight {
-        color: #00E5FF;
+        color: var(--primary-color);
     }
 
     .subtitle {
@@ -156,7 +164,6 @@
         font-weight: 400;
     }
 
-    /* Кнопки в ряд */
     .hero-actions {
         display: flex;
         justify-content: flex-start;
@@ -166,8 +173,8 @@
     }
 
     .download-btn {
-        background: #FFFFFF;
-        color: #0B101E;
+        background: var(--primary-color);
+        color: #FFFFFF;
         padding: 14px 32px;
         border-radius: 12px;
         text-decoration: none;
@@ -177,6 +184,12 @@
         display: flex;
         align-items: center;
         gap: 10px;
+    }
+
+    .download-btn:hover {
+        background: #7C3AED;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px var(--primary-glow);
     }
 
     .telegram-btn {
@@ -194,20 +207,12 @@
         gap: 10px;
     }
 
-    .download-btn:hover {
-        background: #00E5FF;
-        color: #0B101E;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(0, 229, 255, 0.3);
-    }
-
     .telegram-btn:hover {
         background: rgba(255, 255, 255, 0.1);
         border-color: rgba(255, 255, 255, 0.3);
         transform: translateY(-2px);
     }
 
-    /* Правая колонка: Тут будет картинка с двумя телефонами */
     .hero-image-wrapper {
         flex: 1;
         display: flex;
@@ -228,7 +233,69 @@
         transform: translateY(-5px);
     }
 
-    /* ОСТАЛЬНЫЕ СЕКЦИИ БЕЗ ИЗМЕНЕНИЙ В СТИЛЯХ */
+    /* БЛОК СТАТИСТИКИ */
+    .stats-section {
+        max-width: 1200px;
+        margin: 0 auto 60px auto;
+        padding: 0 20px;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .stat-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 16px;
+        padding: 24px;
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(139, 92, 246, 0.4);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .stat-icon {
+        background: rgba(139, 92, 246, 0.1);
+        color: var(--primary-color);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        flex-shrink: 0;
+    }
+
+    .stat-info h3 {
+        font-size: 28px;
+        font-weight: 800;
+        margin-bottom: 4px;
+        line-height: 1.2;
+    }
+
+    .stat-info p {
+        color: #A0AABF;
+        font-size: 14px;
+        margin-bottom: 8px;
+        font-weight: 600;
+    }
+
+    .stat-info .stat-desc {
+        font-size: 13px;
+        color: #6B778D;
+    }
+
+    /* СЕКЦИЯ ИМКАНЛАР */
     .features {
         padding: 80px 20px;
         max-width: 1100px;
@@ -249,23 +316,23 @@
     }
 
     .card {
-        background: #151C2C;
+        background: var(--card-bg);
         padding: 35px 30px;
         border-radius: 24px;
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--card-border);
         transition: all 0.3s ease;
     }
 
     .card:hover {
         transform: translateY(-5px);
-        background: #1A2336;
-        border-color: rgba(0, 229, 255, 0.2);
+        background: #171C28;
+        border-color: rgba(139, 92, 246, 0.3);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
     .card i {
         font-size: 32px;
-        color: #00E5FF;
+        color: var(--primary-color);
         margin-bottom: 20px;
     }
 
@@ -280,6 +347,7 @@
         font-size: 15px;
     }
 
+    /* СЕКЦИЯ ТАРИФОВ */
     .tariffs {
         padding: 60px 20px;
         max-width: 1000px;
@@ -301,10 +369,10 @@
     }
 
     .tariff-card {
-        background: #151C2C;
+        background: var(--card-bg);
         padding: 40px 30px;
         border-radius: 24px;
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--card-border);
         width: 100%;
         max-width: 340px;
         transition: all 0.3s ease;
@@ -313,14 +381,14 @@
 
     .tariff-card:hover {
         transform: translateY(-5px);
-        border-color: rgba(0, 229, 255, 0.4);
+        border-color: rgba(139, 92, 246, 0.4);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
     .tariff-price {
         font-size: 42px;
         font-weight: 800;
-        color: #00E5FF;
+        color: var(--primary-color);
         margin: 20px 0;
     }
 
@@ -343,7 +411,7 @@
     }
 
     .tariff-features li i.fa-check {
-        color: #00E5FF;
+        color: var(--primary-color);
         margin-right: 10px;
     }
 
@@ -356,8 +424,8 @@
         display: block;
         padding: 15px;
         background: transparent;
-        border: 2px solid #00E5FF;
-        color: #00E5FF;
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
         text-decoration: none;
         border-radius: 50px;
         font-weight: 600;
@@ -365,20 +433,21 @@
     }
 
     .tariff-btn:hover {
-        background: #00E5FF;
-        color: #0B101E;
+        background: var(--primary-color);
+        color: #FFFFFF;
     }
 
     .premium-card .tariff-btn {
-        background: #00E5FF;
-        color: #0B101E;
+        background: var(--primary-color);
+        color: #FFFFFF;
     }
 
     .premium-card .tariff-btn:hover {
         background: transparent;
-        color: #00E5FF;
+        color: var(--primary-color);
     }
 
+    /* ГАЛЕРЕЯ СКРИНШОТОВ */
     .gallery-section {
         padding: 60px 20px 100px 20px;
         max-width: 1200px;
@@ -405,17 +474,18 @@
         height: auto;
         border-radius: 24px;
         box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-        border: 3px solid #151C2C;
+        border: 3px solid var(--card-bg);
         transition: all 0.3s ease;
     }
 
     .gallery-item:hover {
         transform: translateY(-8px) scale(1.04);
-        border-color: #00E5FF;
+        border-color: var(--primary-color);
     }
 
+    /* FOOTER */
     .footer {
-        background: #070B14;
+        background: #040508;
         text-align: center;
         padding: 50px 20px 30px;
         border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -440,7 +510,7 @@
     }
 
     .footer-contacts a:hover {
-        color: #00E5FF;
+        color: var(--primary-color);
     }
 
     .footer-links {
@@ -459,7 +529,7 @@
     }
 
     .footer-links a:hover {
-        color: #00E5FF;
+        color: var(--primary-color);
         text-decoration: underline;
     }
 
@@ -540,9 +610,58 @@
             </div>
         </div>
 
-        <!-- Правая колонка (Твоя картинка с 2 телефонами) -->
+        <!-- Правая колонка (Картинка с 2 телефонами) -->
         <div class="hero-image-wrapper">
             <img src="two_phones_mockup.png" alt="IMEI Yoxla App Mockup" class="app-screenshot-main" onerror="this.src='single_imei_screen.jpg'">
+        </div>
+    </div>
+</section>
+
+<!-- БЛОК СТАТИСТИКИ КАК НА МАКЕТЕ -->
+<section class="stats-section">
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div class="stat-info">
+                <h3>150 000+</h3>
+                <p>Uğurlu yoxlanış</p>
+                <div class="stat-desc">Hər gün artan uğurlu əməliyyat sayı.</div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fa-solid fa-mobile-screen"></i>
+            </div>
+            <div class="stat-info">
+                <h3>Bütün</h3>
+                <p>Dəstəklənən Modellər</p>
+                <div class="stat-desc">Çox sayda brend və model üzrə geniş baza.</div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fa-solid fa-tags"></i>
+            </div>
+            <div class="stat-info">
+                <h3>10+</h3>
+                <p>Dəstəklənən Brendlər</p>
+                <div class="stat-desc">Bütün əsas brendlər üçün dəstək.</div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div class="stat-info">
+                <h3>99.9%</h3>
+                <p>Uptime (İşlək vaxt)</p>
+                <div class="stat-desc">Yüksək əlçatanlıq ilə etibarlı xidmət.</div>
+            </div>
         </div>
     </div>
 </section>
