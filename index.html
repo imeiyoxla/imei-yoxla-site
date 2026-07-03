@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IMEI Yoxla - Təhlükəsiz və Sürətli</title>
+    <title>IMEI Yoxla - Cihazınızın statusunu yoxlayın</title>
+    
+    <!-- Иконка сайта (Favicon) -->
+    <link rel="icon" type="image/png" href="Logo.png">
     
     <!-- Современный шрифт Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -34,7 +37,6 @@
         background: radial-gradient(circle at center, #162032 0%, #0B101E 100%);
     }
 
-    /* Стиль для логотипа */
     .logo-img {
         width: 100px;
         height: 100px;
@@ -101,7 +103,6 @@
         box-shadow: 0 12px 30px rgba(0, 229, 255, 0.4);
     }
 
-    /* Главный скриншот смартфона */
     .app-screenshot {
         max-width: 290px;
         width: 100%;
@@ -167,7 +168,106 @@
         font-size: 15px;
     }
 
-    /* НОВАЯ СЕКЦИЯ: ГАЛЕРЕЯ СКРИНШОТОВ */
+    /* СЕКЦИЯ ТАРИФОВ (ДЛЯ GOOGLE ADS) */
+    .tariffs {
+        padding: 60px 20px;
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    .tariffs h2 {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 36px;
+        font-weight: 800;
+    }
+
+    .tariffs-grid {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+
+    .tariff-card {
+        background: #151C2C;
+        padding: 40px 30px;
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        width: 100%;
+        max-width: 340px;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .tariff-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(0, 229, 255, 0.4);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .tariff-price {
+        font-size: 42px;
+        font-weight: 800;
+        color: #00E5FF;
+        margin: 20px 0;
+    }
+
+    .tariff-price span {
+        font-size: 16px;
+        color: #A0AABF;
+        font-weight: 400;
+    }
+
+    .tariff-features {
+        list-style: none;
+        margin-bottom: 30px;
+        text-align: left;
+    }
+
+    .tariff-features li {
+        margin-bottom: 12px;
+        color: #A0AABF;
+        font-size: 16px;
+    }
+
+    .tariff-features li i.fa-check {
+        color: #00E5FF;
+        margin-right: 10px;
+    }
+
+    .tariff-features li i.fa-xmark {
+        color: #6B778D;
+        margin-right: 10px;
+    }
+
+    .tariff-btn {
+        display: block;
+        padding: 15px;
+        background: transparent;
+        border: 2px solid #00E5FF;
+        color: #00E5FF;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+    .tariff-btn:hover {
+        background: #00E5FF;
+        color: #0B101E;
+    }
+
+    .premium-card .tariff-btn {
+        background: #00E5FF;
+        color: #0B101E;
+    }
+
+    .premium-card .tariff-btn:hover {
+        background: transparent;
+        color: #00E5FF;
+    }
+
     .gallery-section {
         padding: 60px 20px 100px 20px;
         max-width: 1200px;
@@ -203,12 +303,59 @@
         border-color: #00E5FF;
     }
 
+    /* ОБНОВЛЕННЫЙ ПОДВАЛ С КОНТАКТАМИ И ПОЛИТИКОЙ */
     .footer {
+        background: #070B14;
         text-align: center;
-        padding: 40px;
+        padding: 50px 20px 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-contacts {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+    }
+
+    .footer-contacts a {
+        color: #FFFFFF;
+        text-decoration: none;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: color 0.3s;
+    }
+
+    .footer-contacts a:hover {
+        color: #00E5FF;
+    }
+
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+    }
+
+    .footer-links a {
+        color: #A0AABF;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+        color: #00E5FF;
+        text-decoration: underline;
+    }
+
+    .footer-copyright {
         color: #6B778D;
         font-size: 14px;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     @media (max-width: 560px) {
@@ -236,8 +383,7 @@
 <body>
 
 <section class="hero">
-    <!-- Твой логотип -->
-    <img src="Logo.png" alt="IMEI Yoxla Logo" class="logo-img" onerror="this.style.display='none'">
+    <img src="Logo.png" alt="IMEI Yoxla App Logo" class="logo-img" onerror="this.style.display='none'">
     
     <h1>IMEI <span class="highlight">Yoxla</span></h1>
     
@@ -254,8 +400,7 @@
         </a>
     </div>
 
-    <!-- Главный скриншот -->
-    <img src="single_imei_screen.jpg" alt="IMEI Yoxla App" class="app-screenshot">
+    <img src="single_imei_screen.jpg" alt="IMEI yoxlama prosesi ekranı" class="app-screenshot">
 </section>
 
 <section class="features">
@@ -270,7 +415,7 @@
         <div class="card">
             <i class="fa-solid fa-mobile-retro"></i>
             <h3>Cihaz Məlumatı</h3>
-            <p>Brend, model </p>
+            <p>Brend, model və texniki xüsusiyyətlər.</p>
         </div>
         
         <div class="card">
@@ -282,13 +427,13 @@
         <div class="card">
             <i class="fa-solid fa-building-columns"></i>
             <h3>Məlumat Mənbəyi</h3>
-            <p>MyGov və Gömrük sistemlərindən məlumat əldə edir.</p>
+            <p>MyGov və Gömrük sistemlərindən rəsmi məlumat əldə edir.</p>
         </div>
         
         <div class="card">
             <i class="fa-solid fa-sim-card"></i>
             <h3>Dual IMEI</h3>
-            <p>İki IMEI eyni anda yoxlama imkanı.</p>
+            <p>İki IMEI nömrəsini eyni anda yoxlama imkanı.</p>
         </div>
         
         <div class="card">
@@ -299,19 +444,67 @@
     </div>
 </section>
 
-<!-- НОВАЯ СЕКЦИЯ С ОСТАЛЬНЫМИ СКРИНШОТАМИ -->
-<section class="gallery-section">
-    <h2>MÜASİR VƏ ZÖVQLÜ DİZAYN</h2>
-    <div class="gallery-grid">
-        <img src="authscreen.jpg" alt="Giriş Ekranı" class="gallery-item">
-        <img src="dual_imei_screen.jpg" alt="Dual IMEI" class="gallery-item">
-        <img src="results1.jpg" alt="Nəticələr 1" class="gallery-item">
-        <img src="results2.jpg" alt="Nəticələr 2" class="gallery-item">
+<!-- СЕКЦИЯ ТАРИФОВ -->
+<section class="tariffs">
+    <h2>Tariflər və Paketlər</h2>
+    <div class="tariffs-grid">
+        <!-- Бесплатный тариф -->
+        <div class="tariff-card">
+            <h3>Pulsuz</h3>
+            <div class="tariff-price">0 ₼ <span>/ ay</span></div>
+            <ul class="tariff-features">
+                <li><i class="fa-solid fa-check"></i> Gündəlik 3 yoxlama</li>
+                <li><i class="fa-solid fa-check"></i> Əsas cihaz məlumatları</li>
+                <li><i class="fa-solid fa-xmark"></i> Dual IMEI yoxlama</li>
+                <li><i class="fa-solid fa-xmark"></i> MyGov rəsmi statusu</li>
+            </ul>
+            <a href="register.html" class="tariff-btn">İstifadəyə başla</a>
+        </div>
+
+        <!-- Платный тариф -->
+        <div class="tariff-card premium-card">
+            <h3>Premium</h3>
+            <div class="tariff-price">5 ₼ <span>/ ay</span></div>
+            <ul class="tariff-features">
+                <li><i class="fa-solid fa-check"></i> Limitsiz yoxlama</li>
+                <li><i class="fa-solid fa-check"></i> Ətraflı məlumat (MyGov)</li>
+                <li><i class="fa-solid fa-check"></i> Dual IMEI yoxlama</li>
+                <li><i class="fa-solid fa-check"></i> 7/24 Prioritet dəstək</li>
+            </ul>
+            <a href="register.html" class="tariff-btn">Premium al</a>
+        </div>
     </div>
 </section>
 
+<section class="gallery-section">
+    <h2>MÜASİR VƏ ZÖVQLÜ DİZAYN</h2>
+    <div class="gallery-grid">
+        <img src="authscreen.jpg" alt="Tətbiqə Giriş Ekranı" class="gallery-item">
+        <img src="dual_imei_screen.jpg" alt="Dual IMEI Yoxlanışı" class="gallery-item">
+        <img src="results1.jpg" alt="Axtarış Nəticələri 1" class="gallery-item">
+        <img src="results2.jpg" alt="Axtarış Nəticələri 2" class="gallery-item">
+    </div>
+</section>
+
+<!-- ОБНОВЛЕННЫЙ FOOTER -->
 <div class="footer">
-    IMEI Yoxla © 2026 | By Hacı
+    <!-- Контакты для связи (Требование Google Ads) -->
+    <div class="footer-contacts">
+        <a href="mailto:support@imeiyoxla.com"><i class="fa-solid fa-envelope"></i> support@imeiyoxla.com</a>
+        <a href="https://t.me/imeiyoxla_support" target="_blank"><i class="fa-brands fa-telegram"></i> @imeiyoxla_support</a>
+    </div>
+
+    <!-- Юридические страницы (Требование Google Ads) -->
+    <div class="footer-links">
+        <a href="privacy.html">Məxfilik Siyasəti (Privacy Policy)</a>
+        <a href="terms.html">İstifadə Şərtləri (Terms of Service)</a>
+        <a href="refund.html">Ödənişin Qaytarılması (Refund Policy)</a>
+        <a href="contact.html">Bizimlə Əlaqə</a>
+    </div>
+
+    <div class="footer-copyright">
+        IMEI Yoxla © 2026 | Bütün hüquqlar qorunur. Cihazınızın təhlükəsizliyi bizim prioritetimizdir.
+    </div>
 </div>
 
 </body>
