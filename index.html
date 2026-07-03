@@ -314,7 +314,19 @@
     IMEI Yoxla © 2026 | By Hacı
 </div>
 
-</body> <script>
+</body>
+<script>
+(function () {
+    const hash = new URLSearchParams(location.hash.substring(1));
+    const deviceId = hash.get("device_id");
+    if (deviceId) {
+        sessionStorage.setItem("device_id", deviceId);
+        history.replaceState({}, document.title, location.pathname + location.search);
+    }
+})();
+</script>
+
+<script>
 fetch('https://api.github.com/repos/imeiyoxla/imei-yoxla-site/releases/latest')
   .then(response => response.json())
   .then(data => {
